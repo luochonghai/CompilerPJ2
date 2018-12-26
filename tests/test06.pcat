@@ -1,0 +1,13 @@
+(* This is a test of if statement. *)
+
+PROGRAM IS
+    VAR I : INTEGER := 0;
+BEGIN 
+	WRITE("Input an integer: ");
+	READ(I);
+	IF I = 0 THEN WRITE("I = 0");
+	ELSIF I = 1 THEN WRITE("I = 1");
+	ELSIF I = 2 THEN WRITE("I = 2");
+	ELSE WRITE("I = ", I);
+	END;
+END;

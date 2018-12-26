@@ -1,0 +1,20 @@
+(* This is a test of unnested non-recursive parameterless *)
+(* procedure calls with local variables.                  *)
+
+PROGRAM IS
+    VAR I, POWER : INTEGER := 0;
+    PROCEDURE FINDPOWER() IS
+	VAR J : INTEGER := 0;
+    BEGIN
+	POWER := 1;
+	FOR J := 1 TO I DO
+	    POWER := POWER * 2;
+	END;
+    END;
+BEGIN 
+    WRITE ("Calculate the first 5 powers of 2:");
+    FOR I := 1 TO 5 DO
+	FINDPOWER();
+	WRITE ("2**", I, " = ", POWER);
+    END;
+END;

@@ -1,0 +1,31 @@
+(* This is a test of nested recursive procedures with *)
+(* parameters, local variables, and return values.    *)
+
+PROGRAM IS
+    VAR A : INTEGER := 0;
+    PROCEDURE FACTORIAL (A : INTEGER; B : INTEGER) : INTEGER IS 
+        VAR T : INTEGER := 0;
+	PROCEDURE ADD (A, B : INTEGER) : INTEGER IS BEGIN
+	    RETURN A + B;
+	END;
+	PROCEDURE MULT (A, B : INTEGER) : INTEGER IS
+	    VAR I, P : INTEGER := 0;
+	BEGIN
+	    I := 1;
+	    FOR P:= 0 TO A BY 0 DO
+		P := ADD (P, B);
+                I := I + 1;
+	    END;
+            RETURN P;
+	END;
+    BEGIN
+	WRITE ("IN FACTORIAL", "A=", A, ", B=", B);
+	IF B > 0 THEN 
+          T := MULT (A, B); 
+          RETURN FACTORIAL (T, B - 1); 
+        END;
+    END;
+BEGIN 
+    A := FACTORIAL (1, 4);
+    WRITE ("FACTORIAL(4) = ", A, " (SHOULD BE 24)");
+END;
