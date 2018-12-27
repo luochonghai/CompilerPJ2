@@ -1,4 +1,5 @@
 # Makefile for the PCAT AST generation
+
 GCC = gcc
 CFLAGS = -g -std=gnu99
 YACC = bison
@@ -13,11 +14,11 @@ parser: main.c y.tab.c lex.yy.c ast.h ast.o
 ast.o:  ast.c ast.h
 	$(GCC) $(CFLAGS) -c ast.c
 
-y.tab.c: pcat.y
-	$(YACC) -d -y pcat.y
+y.tab.c: syntax.y
+	$(YACC) -d -y syntax.y
 
-lex.yy.c: pcat.lex
-	$(LEX) pcat.lex
+lex.yy.c: lexical.lex
+	$(LEX) lexical.lex
 
 clean:
-	/bin/rm -f *.o *~ pcat.yy.c pcat.c pcat.output parser core
+	/bin/rm -f *.o *~ parser 
